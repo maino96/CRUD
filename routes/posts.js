@@ -19,7 +19,7 @@ router.post ("/", async (req, res) => {
             password,
             title,
             content,
-            createdAt: Date,
+            createdAt: date
         }
     );
       
