@@ -40,34 +40,34 @@ router.get("/", async (req, res, next) => {
   });
 
 // 게시글 상세 조회 API
-router.get("/:_id", async (req, res) => {
-  const { _id } = req.params;
-  const detail = await Posts.findOne({ _id });
+router.get("/:_postId", async (req, res) => {
+  const { _postId } = req.params;
+  const detail = await Posts.findOne({ _postId });
 
   res.json({ detail });
 });
 
 // 게시글 삭제 API
-router.delete("/:_id", async (req, res) => {
-  const { _id } = req.params;
+router.delete("/:_postId", async (req, res) => {
+  const { _postId } = req.params;
   const { password } = req.body;
   const originPassword = await Posts.find({ password });
 
 
   if (password === String(originPassword[0].password)) {
-    await Posts.deleteOne({ _id });
+    await Posts.deleteOne({ _postId });
     return res.json({ message: "게시글을 삭제하였습니다." });
   }
   return res.json({ message: "비밀번호가 다릅니다." }); 
 });
 
 // 게시글 수정 API
-router.put("/:_id", async (req, res) => {
-  const { _id } = req.params;
+router.put("/:_postId", async (req, res) => {
+  const { _postId } = req.params;
   const { password, title, content } = req.body;
-  const originPassword = await Posts.findOne({ _id, password });
+  const originPassword = await Posts.findOne({ _postId, password });
   if (originPassword){
-    await Posts.updateOne({ _id }, { title, content });
+    await Posts.updateOne({ _postId }, { title, content });
   } 
   else {
     return res.json({ message: "비밀번호가 일치하지 않습니다!" });
