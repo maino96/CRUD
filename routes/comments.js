@@ -5,7 +5,7 @@ const router = express.Router(); // Router 객체 생성
 
 
 // 댓글 작성 API + 현지시간 필요
-router.post ("/:_post", async (req, res) => {
+router.post ("/:_id", async (req, res) => {
    try{
      const createdAt = new Date();
     // const date = createdAt.toLocaleDateString();
