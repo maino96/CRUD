@@ -8,7 +8,7 @@ const router = express.Router(); // Router 객체 생성
 router.post ("/", async (req, res) => {
   try{ 
   const createdAt = new Date();
-   // const date = createdAt.toLocaleDateString();
+  const date = createdAt.toLocaleDateString();
 
     const { user, title, content, password } = req.body;
     console.log({ user, title, content, password });
@@ -19,7 +19,7 @@ router.post ("/", async (req, res) => {
             password,
             title,
             content,
-            createdAt,
+            createdAt: Date,
         }
     );
       

@@ -8,7 +8,7 @@ const router = express.Router(); // Router 객체 생성
 router.post ("/:_postId", async (req, res) => {
    try{
      const createdAt = new Date();
-    // const date = createdAt.toLocaleDateString();
+     const date = createdAt.toLocaleDateString();
     const { _postId } = req.params; // req.params_postId 구조분해할당한 형태
 
     const { user, content, password } = req.body;
@@ -20,7 +20,7 @@ router.post ("/:_postId", async (req, res) => {
             user,
             password,
             content,
-            createdAt,
+            createdAt: date,
         }
     );
 
